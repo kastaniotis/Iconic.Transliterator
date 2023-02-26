@@ -7,9 +7,16 @@ The library was inspired from danielstjules/Stringy
 https://github.com/danielstjules/Stringy
 
 The initial purpose was to create a library to help easily create slugs.
-But I saw no reason to allow some more flexibility.
+But I saw no reason not to allow some more flexibility.
 
 ## Usage
+
+You can install the library through NuGet
+
+```
+NuGet\Install-Package Iconic.Transliterator -Version 1.0.0
+```
+
 
 Here is a brief sample of how you can use the library
 
@@ -42,7 +49,7 @@ The reason for this distinction is that those categories have to be transliterat
 in order to not corrupt the composite ones.
 
 The transliterator first replaces the Combinations, then the plain letters, and finally the dual ones. That way, the combinations
-are not destroyed by plain letter replacements, and the replaced Duals are not destroyed by accidental letters or combination occurances
+are not destroyed by plain letter replacements, and the replaced Duals are not destroyed by accidental letter or combination occurances
 in the already transliterated text.
 
 Letter and combination matches should be defined in lower case. The transliterator will try to replace and maintain capitalization
@@ -58,7 +65,7 @@ There are currently classes for GreekToEnglish, GermanToEnglish and EnglishToSlu
 Conversion choices are not meant to be proper Romanization, but rather what would be easy to understand in social
 media. What is usually known as Greeklish.
 I don't speak German, so I can't verify the functionality or completeness of the class. I just used it as an example to test Dual letters.
-*Please help if you see something wrong*.
+**Please help if you see something wrong**.
 The Slug is a pseudo language that defines the replacement rules to produce proper slugs. It currently eliminates multiple spaces
 and replaces them with dashes, and converts everything to lower case.
 
