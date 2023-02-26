@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iconic.Transliterator.Tests
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F85652FB-DEDA-4536-A015-B999541400C0}"
 	ProjectSection(SolutionItems) = preProject
-		Iconic.Transliterator\README.md = Iconic.Transliterator\README.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
