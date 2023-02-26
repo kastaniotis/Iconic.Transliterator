@@ -6,6 +6,29 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <SignAssembly>False</SignAssembly>
+    <Title>Iconic.Transliterator</Title>
+    <Authors>D.Kastaniotis</Authors>
+    <Company>Iconic</Company>
+    <Description>A transliteration library that is flexible enough to help with simple slugs or even complex text transformations</Description>
+    <Copyright>Copyright (c) 2023 Dimitris Kastaniotis - MIT</Copyright>
+    <PackageProjectUrl>https://github.com/kastaniotis/Iconic.Transliterator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kastaniotis/Iconic.Transliterator</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>slug;transliterate;transliterator;slugger;converter</PackageTags>
+    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

@@ -1,6 +1,10 @@
 # Transliterator
 
-A small library inspired from danielstjules/Stringy
+A transliteration library that is flexible enough to help with simple slugs 
+or even complex text transformations.
+
+The library was inspired from danielstjules/Stringy
+https://github.com/danielstjules/Stringy
 
 The initial purpose was to create a library to help easily create slugs.
 But I saw no reason to allow some more flexibility.
