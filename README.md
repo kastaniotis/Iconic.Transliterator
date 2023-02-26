@@ -1,13 +1,7 @@
 # Transliterator
 
-A transliteration library that is flexible enough to help with simple slugs 
-or even complex text transformations.
-
-The library was inspired from danielstjules/Stringy
-https://github.com/danielstjules/Stringy
-
-The initial purpose was to create a library to help easily create slugs.
-But I saw no reason not to allow some more flexibility.
+A library that can help with any text transliteration, like slug creation.
+It supports multiple languages and can accept new ones very easily.
 
 ## Usage
 
@@ -16,7 +10,6 @@ You can install the library through NuGet
 ```
 NuGet\Install-Package Iconic.Transliterator -Version 1.0.0
 ```
-
 
 Here is a brief sample of how you can use the library
 
@@ -32,7 +25,7 @@ transliterator.addConversion(new EnglishToSlug());
 var slug = transliterator.convert(message); // "sevomaste-tin-idiotikotita-sas"
 ```
 
-You can add as many conversions as you want, and they will be applied in series (as long they make sense in that series).
+You can add all the conversions that you want, and they will be applied in series.
 
 ## Languages
 
@@ -66,10 +59,8 @@ Conversion choices are not meant to be proper Romanization, but rather what woul
 media. What is usually known as Greeklish.
 I don't speak German, so I can't verify the functionality or completeness of the class. I just used it as an example to test Dual letters.
 **Please help if you see something wrong**.
-The Slug is a pseudo language that defines the replacement rules to produce proper slugs. It currently eliminates multiple spaces
-and replaces them with dashes, and converts everything to lower case.
+The Slug is a pseudo language that defines the replacement rules to produce proper slugs. It currently eliminates multiple spaces, replaces them with dashes, and converts everything to lower case.
 
 ## TODO:
 
-- Add tests
 - Add functionality to allow more complex conversions like markdown to html

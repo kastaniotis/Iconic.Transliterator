@@ -8,9 +8,10 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <SignAssembly>False</SignAssembly>
     <Title>Iconic.Transliterator</Title>
-    <Authors>D.Kastaniotis</Authors>
+    <Authors>Dimitris Kastaniotis</Authors>
     <Company>Iconic</Company>
-    <Description>A transliteration library that is flexible enough to help with simple slugs or even complex text transformations</Description>
+    <Description>A library that can help with any text transliteration, like slug creation.
+It supports multiple languages and can accept new ones very easily.</Description>
     <Copyright>Copyright (c) 2023 Dimitris Kastaniotis - MIT</Copyright>
     <PackageProjectUrl>https://github.com/kastaniotis/Iconic.Transliterator</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kastaniotis/Iconic.Transliterator</RepositoryUrl>
@@ -18,6 +19,7 @@
     <PackageTags>slug;transliterate;transliterator;slugger;converter</PackageTags>
     <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Version>1.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
