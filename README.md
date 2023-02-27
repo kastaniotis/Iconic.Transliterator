@@ -5,6 +5,9 @@
 A library that can help with any text transliteration, like slug creation.
 It supports multiple languages and can accept new ones very easily.
 
+Latest changes:  
+Support for Cyrilic languages
+
 ## Usage
 
 You can install the library through NuGet
