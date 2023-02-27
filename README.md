@@ -7,7 +7,7 @@ A library that can help with any text transliteration, like slug creation.
 It supports multiple languages and can accept new ones very easily.
 
 Latest changes:  
-Support for Cyrilic languages
+Support for Cyrilic languages. **Please help me improve this conversion**
 
 ## Usage
 
