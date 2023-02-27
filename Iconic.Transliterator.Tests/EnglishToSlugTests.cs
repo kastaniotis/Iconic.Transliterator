@@ -27,6 +27,7 @@ namespace Iconic.Transliterator.Tests
 
             text = " has trailing and leading spaces  that should be removed   ";
             Assert.AreEqual("has-trailing-and-leading-spaces-that-should-be-removed", slugger.Convert(text));
+            
         }
     }
 }
