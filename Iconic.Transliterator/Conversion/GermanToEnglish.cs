@@ -3,7 +3,7 @@
     public class GermanToEnglish : ConversionInterface
     {
         /*
-         * Taken from stringify PHP library. I am not sure
+         * Taken from stringy PHP library. I am not sure
          * how people transliterate these.
          * https://github.com/danielstjules/Stringy
          */
