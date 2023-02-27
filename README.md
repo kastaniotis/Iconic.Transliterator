@@ -1,5 +1,7 @@
 # Transliterator
 
+[![.NET](https://github.com/kastaniotis/Iconic.Transliterator/actions/workflows/dotnet.yml/badge.svg)](https://github.com/kastaniotis/Iconic.Transliterator/actions/workflows/dotnet.yml)
+
 A library that can help with any text transliteration, like slug creation.
 It supports multiple languages and can accept new ones very easily.
 
