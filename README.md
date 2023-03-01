@@ -60,10 +60,10 @@ The final part of the Conversion Interface defines a general purpose transformat
 This way, we can create conversion classes to do whatever transformations we need.
 For example, we could create a Profanity class, and replace all nasty words in our Profanity DB table with ******.
 
-There are currently classes for GreekToEnglish, GermanToEnglish and EnglishToSlug.
+There are currently classes for GreekToEnglish, GermanToEnglish, CyrillicToEnglish and EnglishToSlug.
 Conversion choices are not meant to be proper Romanization, but rather what would be easy to understand in social
-media. What is usually known as Greeklish.
-I don't speak German, so I can't verify the functionality or completeness of the class. I just used it as an example to test Dual letters.
+media. 
+I don't speak German or any language that uses the Cyrillic alphabet, so I can't verify the functionality or completeness of those classes. 
 **Please help if you see something wrong**.
 The Slug is a pseudo language that defines the replacement rules to produce proper slugs. It currently eliminates multiple spaces, replaces them with dashes, and converts everything to lower case.
 
