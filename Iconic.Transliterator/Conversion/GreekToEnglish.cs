@@ -9,9 +9,10 @@
         public Dictionary<string, string> GetCombinations()
         {
             return new Dictionary<string, string>() {
-                { "ai", "αι,αί" },
+                // Those difthongs are better legible as double letters, rather than phoeneticly accuratae single ones
+                //{ "ai", "αι,αί" },
                 //{ "i", "οι,ει,οί,εί" },
-                { "u", "ου,ού" },
+                //{ "u", "ου,ού" },
 
                 { "ava",  "αυα,αύα"},
                 { "ave",  "αυε,αύε"},
