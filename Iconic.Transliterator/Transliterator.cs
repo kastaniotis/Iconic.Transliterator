@@ -14,9 +14,10 @@ namespace Iconic.Transliterator
             this.conversions.Add(conversion);
         }
 
+        // TODO: Check if conversions can be done more efficiently than using just strings
         public string Convert(string text)
         {
-            foreach (ConversionInterface conversion in this.conversions)
+            foreach (ConversionInterface conversion in conversions)
             {
                 text = conversion.Transform(text);
 
