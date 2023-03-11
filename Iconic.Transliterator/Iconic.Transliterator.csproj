@@ -16,10 +16,11 @@ It supports multiple languages and can accept new ones very easily.</Description
     <PackageProjectUrl>https://github.com/kastaniotis/Iconic.Transliterator</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kastaniotis/Iconic.Transliterator</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>slug;transliterate;transliterator;slugger;converter</PackageTags>
+    <PackageTags>slug;transliterate;transliterator;slugger;converter;Greek;Cyrillic;German</PackageTags>
     <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
+    <AssemblyVersion></AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

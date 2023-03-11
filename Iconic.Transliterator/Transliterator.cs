@@ -19,6 +19,7 @@ namespace Iconic.Transliterator
             foreach (ConversionInterface conversion in this.conversions)
             {
                 text = conversion.Transform(text);
+
                 foreach(var combination in conversion.GetCombinations()) 
                 {
                     foreach(var option in combination.Value.Split(","))
@@ -29,7 +30,17 @@ namespace Iconic.Transliterator
                     }
                 }
 
+                //TODO: Letters should be split with comma to keep things consistent
                 foreach (var combination in conversion.GetLetters())
+                {
+                    foreach (var option in combination.Value.ToCharArray())
+                    {
+                        text = text.Replace(option.ToString().ToLower(), combination.Key.ToLower()); //Lowercase
+                        text = text.Replace(option.ToString().ToUpper(), combination.Key.ToUpper()); //All Caps
+                    }
+                }
+
+                foreach (var combination in conversion.GetDuals())
                 {
                     foreach (var option in combination.Value.ToCharArray())
                     {
