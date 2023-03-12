@@ -1,57 +1,86 @@
 ﻿using Iconic.Transliterator.Conversion;
+using System;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Xml.Schema;
 
 namespace Iconic.Transliterator
 {
     public class Transliterator
     {
-        private List<ConversionInterface> conversions;
-        public Transliterator() {
-            conversions = new List<ConversionInterface>();
-        }
-
-        public void AddConversion(ConversionInterface conversion)
+        private Dictionary<string, string> Conversions = new Dictionary<string, string>();
+        private List<Type> Types = new();
+        public void AddConversions(Type className) 
         {
-            this.conversions.Add(conversion);
-        }
+            var conversions = className.GetField("Conversions");//.GetProperty("Conversions");
+            Dictionary<string, string> conversion = new();// (Dictionary<string,string>).GetConstantValue();
+            conversion = conversions.GetValue(conversions) as Dictionary<string, string>;
 
-        // TODO: Check if conversions can be done more efficiently than using just strings
+            Types.Add(className);
+            foreach (var item in conversion) 
+            {
+                foreach (var current in item.Value.Split(","))
+                {
+                    Conversions.Add(current, item.Key);
+                    var s = current.ToUpper();
+                    Conversions.TryAdd(current.ToUpper(), item.Key.ToUpper());
+                    Conversions.TryAdd(Capitalize(current), Capitalize(item.Key));
+                }
+            }
+            Conversions.OrderByDescending(i => i.Key.Length);
+        }
         public string Convert(string text)
         {
-            foreach (ConversionInterface conversion in conversions)
+            // Elliminate multiple spaces
+            while(text.Contains("  "))
             {
-                text = conversion.Transform(text);
+                text = text.Replace("  ", " ");
+            }
 
-                foreach(var combination in conversion.GetCombinations()) 
-                {
-                    foreach(var option in combination.Value.Split(","))
-                    {
-                        text = text.Replace(option.ToLower(), combination.Key.ToLower()); //Lowercase
-                        text = text.Replace(option.ToUpper(), combination.Key.ToUpper()); //All Caps
-                        text = text.Replace(Capitalize(option), Capitalize(combination.Key)); //Capitalized
-                    }
-                }
+            foreach (var action in Types)
+            {
+                text = action.GetMethod("Transform").Invoke(action, new object[] { text }).ToString();
+            }
 
-                //TODO: Letters should be split with comma to keep things consistent
-                foreach (var combination in conversion.GetLetters())
-                {
-                    foreach (var option in combination.Value.ToCharArray())
-                    {
-                        text = text.Replace(option.ToString().ToLower(), combination.Key.ToLower()); //Lowercase
-                        text = text.Replace(option.ToString().ToUpper(), combination.Key.ToUpper()); //All Caps
-                    }
-                }
+            var builder = new StringBuilder(text);
+            
+            foreach (var combination in Conversions)
+            {
+                builder.Replace(combination.Key, combination.Value);
+            }
 
-                foreach (var combination in conversion.GetDuals())
+            return builder.ToString();
+        }
+
+        public string ConvertSpan(string text)
+        {
+            Span<char> resultSpan = stackalloc char[text.Length];
+            text.AsSpan().CopyTo(resultSpan);
+            int occurence = -1;
+            
+            foreach (var combination in Conversions)
+            {
+                occurence = resultSpan.IndexOf(combination.Key);
+                while (occurence > -1)
                 {
-                    foreach (var option in combination.Value.ToCharArray())
+                    ReadOnlySpan<char> replacement = combination.Value.AsSpan();
+                    ReadOnlySpan<char> found = resultSpan.Slice(occurence, combination.Key.Length);
+                    ReadOnlySpan<char> prefix = resultSpan.Slice(0, occurence);
+                    ReadOnlySpan<char> suffix = resultSpan.Slice(occurence + combination.Key.Length);
+
+                    if (found.Length != replacement.Length)
                     {
-                        text = text.Replace(option.ToString().ToLower(), combination.Key.ToLower()); //Lowercase
-                        text = text.Replace(option.ToString().ToUpper(), combination.Key.ToUpper()); //All Caps
+                        resultSpan = stackalloc char[prefix.Length + suffix.Length + replacement.Length];
                     }
+                    prefix.CopyTo(resultSpan.Slice(0, prefix.Length));
+                    replacement.CopyTo(resultSpan.Slice(prefix.Length, replacement.Length));
+                    suffix.CopyTo(resultSpan.Slice(prefix.Length + replacement.Length, suffix.Length));
+                    occurence = resultSpan.IndexOf(combination.Key);
                 }
             }
 
-            return text;
+            return resultSpan.ToString();
         }
 
         public static string Capitalize(string text)

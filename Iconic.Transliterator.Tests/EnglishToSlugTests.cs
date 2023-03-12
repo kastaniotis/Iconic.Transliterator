@@ -14,7 +14,7 @@ namespace Iconic.Transliterator.Tests
         public void SlugTest()
         {
             var slugger = new Transliterator();
-            slugger.AddConversion(new EnglishToSlug());
+            slugger.AddConversions(typeof(EnglishToSlug));
 
             var text = "New conversions can be aDded by creating a new class ";
 
@@ -26,8 +26,7 @@ namespace Iconic.Transliterator.Tests
             Assert.AreEqual(slugger.Convert(text), "has-4-spaces");
 
             text = " has trailing and leading spaces  that should be removed   ";
-            Assert.AreEqual("has-trailing-and-leading-spaces-that-should-be-removed", slugger.Convert(text));
-            
+            Assert.AreEqual("has-trailing-and-leading-spaces-that-should-be-removed", slugger.Convert(text));            
         }
     }
 }

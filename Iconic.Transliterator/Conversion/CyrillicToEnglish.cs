@@ -1,34 +1,21 @@
-﻿namespace Iconic.Transliterator.Conversion
+﻿using System.Text;
+
+namespace Iconic.Transliterator.Conversion
 {
     public class CyrillicToEnglish : ConversionInterface
-    {/*
-      * Added from various sources like wikipedia and
-      * other transliteration libraries. 
-      * It probably has errors and probably needs
-      * more language specific conversions. Please if you
-      * can help open an issue on github with your additions, 
-      * corrections and examples for testing. Thanks in advance
-      */
-        public Dictionary<string, string> GetCombinations()
+    {
+        /*
+         * Added from various sources like wikipedia and
+         * other transliteration libraries. 
+         * It probably has errors and probably needs
+         * more language specific conversions. Please if you
+         * can help open an issue on github with your additions, 
+         * corrections and examples for testing. Thanks in advance
+         */
+
+
+        public static readonly Dictionary<string, string> Conversions = new Dictionary<string, string>()
         {
-            return new Dictionary<string, string>
-            {
-
-            };
-        }
-
-        public Dictionary<string, string> GetDuals()
-        {
-            return new Dictionary<string, string>
-            {
-
-            };
-        }
-
-        public Dictionary<string, string> GetLetters()
-        {
-            return new Dictionary<string, string>
-            {
                 {"a", "а"},
                 {"b", "б"},
                 {"v", "в"},
@@ -56,12 +43,10 @@
                 {"ya", "я"},
                 {"yu", "ю"},
                 {"y", "й"},
-                {"ch", "ч"},
-                {"", ""},
-            };
-        }
+                {"ch", "ч"}
+        };
 
-        public string Transform(string input)
+        public static string Transform(string input)
         {
             return input;
         }

@@ -1,15 +1,16 @@
-﻿namespace Iconic.Transliterator.Conversion
+﻿using System.Text;
+
+namespace Iconic.Transliterator.Conversion
 {
-    public class GreekToEnglish: ConversionInterface
+    public class GreekToEnglish : ConversionInterface
     {
         /*
          * https://open.books4languages.com/greek-a1-orthography/chapter/%CE%BF%CE%B9-%CF%83%CF%85%CE%BD%CE%B4%CF%85%CE%B1%CF%83%CE%BC%CE%BF%CE%AF-%CE%B1%CF%85-%CE%B5%CF%85/
          */
 
-        public Dictionary<string, string> GetCombinations()
+        public static readonly Dictionary<string, string> Conversions = new Dictionary<string, string>()
         {
-            return new Dictionary<string, string>() {
-                // Those difthongs are better legible as double letters, rather than phoeneticly accuratae single ones
+            // Those difthongs are better readable as double letters, rather than phoeneticly accurate single ones
                 //{ "ai", "αι,αί" },
                 //{ "i", "οι,ει,οί,εί" },
                 //{ "u", "ου,ού" },
@@ -60,48 +61,32 @@
                 { "efks", "ευξ,εύξ" },
                 { "efps", "ευψ,εύψ" },
 
-                { "b", "μπ" },
-                { "g", "γκ,γγ" }
-            };
-        }
-
-        public Dictionary<string, string> GetLetters()
-        {
-            return new Dictionary<string, string>()
-            {
-                { "a", "αά" },
-                { "b", "β" },
-                { "g" ,"γ" },
+                { "b", "μπ,β" },
+                { "g", "γκ,γγ,γ" },
+                { "a", "α,ά" },
+                //{ "b", "β" },
+                //{ "g" ,"γ" },
                 { "d", "δ" },
-                { "e", "εέ"},
+                { "e", "ε,έ"},
                 { "z", "ζ"},
-                { "i", "ηήιίϊΐυύϋΰ" },
+                { "i", "η,ή,ι,ί,ϊ,ΐ,υ,ύ,ϋ,ΰ" },
                 { "th", "θ" },
                 { "k", "κ" },
                 { "l", "λ" },
                 { "m", "μ" },
                 { "n", "ν" },
                 { "ks", "ξ"},
-                { "o", "οόωώ" },
+                { "o", "ο,ό,ω,ώ" },
                 { "p", "π"},
                 { "r", "ρ"},
-                { "s", "σς"},
+                { "s", "σ,ς"},
                 { "t", "τ"},
                 { "f", "φ" },
                 { "kh", "χ" },
                 { "ps", "ψ" }
-            };
-        }
+        };
 
-        public Dictionary<string, string> GetDuals()
-        {
-            return new Dictionary<string, string>()
-            {
-
-            };
-        }
-
-        public string Transform(string input)
+        public static string Transform(string input)
         {
             return input;
         }

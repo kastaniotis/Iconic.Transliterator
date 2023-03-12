@@ -1,10 +1,10 @@
-﻿namespace Iconic.Transliterator.Conversion
+﻿using System.Text;
+
+namespace Iconic.Transliterator.Conversion
 {
     public interface ConversionInterface
     {
-        public Dictionary<string, string> GetCombinations();
-        public Dictionary<string, string> GetLetters();
-        public Dictionary<string, string> GetDuals();
-        public string Transform(string input);
+        public static Dictionary<string, string> Combinations { get; set; }
+        public static string Transform(string input) => input;
     }
 }

@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iconic.Transliterator.Benchmarks", "Iconic.Transliterator.Benchmarks\Iconic.Transliterator.Benchmarks.csproj", "{CF611425-3C4B-4D27-8527-158216DEAE16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iconic.Transliterator.Bench", "Iconic.Transliterator.Bench\Iconic.Transliterator.Bench.csproj", "{DF3C22A7-14AC-40CE-9924-44DA82365079}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CF611425-3C4B-4D27-8527-158216DEAE16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF611425-3C4B-4D27-8527-158216DEAE16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF611425-3C4B-4D27-8527-158216DEAE16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF3C22A7-14AC-40CE-9924-44DA82365079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF3C22A7-14AC-40CE-9924-44DA82365079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF3C22A7-14AC-40CE-9924-44DA82365079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF3C22A7-14AC-40CE-9924-44DA82365079}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

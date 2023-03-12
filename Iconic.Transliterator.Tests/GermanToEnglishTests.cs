@@ -9,7 +9,7 @@ namespace Iconic.Transliterator.Tests
         public void GermanTests()
         {
             var transliterator = new Transliterator();
-            transliterator.AddConversion(new GermanToEnglish());
+            transliterator.AddConversions(typeof(GermanToEnglish));
 
             //Simple text is converted to greeklish. Capitalization is maintained.
             var text = "Prüfung auf deutsch";

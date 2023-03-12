@@ -1,0 +1,47 @@
+﻿
+using Iconic.Transliterator;
+using Iconic.Transliterator.Conversion;
+using System.Diagnostics;
+
+string toBeConverted = "Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία ";
+toBeConverted = "Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία ";
+//toBeConverted = "Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία ";
+//toBeConverted = "Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία ";
+
+var watch = Stopwatch.StartNew();
+var converter2 = new Transliterator();
+watch.Stop();
+Console.WriteLine($"Initiated converter2: {watch.Elapsed.Ticks}");
+watch.Restart();
+converter2.AddConversions(typeof(GreekToEnglish));
+watch.Stop();
+Console.WriteLine($"Added Greeklish: {watch.Elapsed.Ticks}");
+watch.Restart();
+converter2.AddConversions(typeof(EnglishToSlug));
+watch.Stop();
+Console.WriteLine($"Added Slug: {watch.Elapsed.Ticks}");
+watch.Restart();
+string greeklish3 = converter2.Convert(toBeConverted);
+watch.Stop();
+Console.WriteLine($"converted Μαρία to {greeklish3}: {watch.Elapsed.Ticks}");
+watch.Restart();
+string greeklish4 = converter2.Convert(toBeConverted);
+watch.Stop();
+Console.WriteLine($"converted Μαρία to {greeklish4}: {watch.Elapsed.Ticks}");
+watch.Restart();
+greeklish4 = converter2.Convert(toBeConverted);
+watch.Stop();
+Console.WriteLine($"converted Μαρία to {greeklish4}: {watch.Elapsed.Ticks}");
+watch.Restart();
+greeklish4 = converter2.Convert(toBeConverted);
+watch.Stop();
+Console.WriteLine($"converted Μαρία to {greeklish4}: {watch.Elapsed.Ticks}");
+watch.Restart();
+var test = converter2.ConvertSpan(toBeConverted);
+watch.Stop();
+Console.WriteLine($"{watch.Elapsed.Ticks}");
+watch.Restart();
+var test2 = converter2.ConvertSpan(toBeConverted);
+watch.Stop();
+Console.WriteLine($"{watch.Elapsed.Ticks}");
+Console.WriteLine(test);

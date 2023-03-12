@@ -1,4 +1,6 @@
-﻿namespace Iconic.Transliterator.Conversion
+﻿using System.Text;
+
+namespace Iconic.Transliterator.Conversion
 {
     public class GermanToEnglish : ConversionInterface
     {
@@ -8,30 +10,14 @@
          * https://github.com/danielstjules/Stringy
          */
 
-        public Dictionary<string, string> GetCombinations()
+        public static readonly Dictionary<string, string> Conversions = new Dictionary<string, string>()
         {
-            return new Dictionary<string, string>();
-        }
-
-        public Dictionary<string, string> GetDuals()
-        {
-            return new Dictionary<string, string>()
-            {
                 { "ae", "ä" },
                 { "oe", "ö" },
                 { "ue", "ü" }
-            };
-        }
+        };
         
-        public Dictionary<string, string> GetLetters()
-        {
-            return new Dictionary<string, string>()
-            {
-                { "s", "ß" }
-            };
-        }
-
-        public string Transform(string input)
+        public static string Transform(string input)
         {
             return input;
         }
