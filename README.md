@@ -8,7 +8,7 @@ A library that can help with any text transliteration, like slug creation.
 It supports multiple languages and can accept new ones very easily.
 
 Latest changes:  
-Support for Cyrilic languages. **Please help me improve this conversion**
+V2 minimized the library's memory and cpu footprint and simplified the Conversion Classes
 
 ## Usage
 
@@ -32,31 +32,18 @@ transliterator.addConversion(new EnglishToSlug());
 var slug = transliterator.convert(message); // "sevomaste-tin-idiotikotita-sas"
 ```
 
-You can add all the conversions that you want, and they will be applied in series.
+You can add all the conversions that you want. The combinations are sorted by length. Larger matches are applied first, so that smaller matches do not 
+ruin larger them.
 
 ## Languages
 
-New conversions can be added by creating a new class and implementing the ConversionInterface.
-The functionality splits letters into three categories.
+New conversions can be added by creating a new class and implementing the IConversion Interface.
 
-- Plain letters that are replaced with their corresponding latin one-to-one. For example the Greek β corresponds to b.
-- Combinations of more than one letters that are pronounced differently according to what comes before or after them. 
-  For example ευ is pronounced ef if it is followed by κ, and ev if it is followed by α. The combinations can be many, and you
-  need to include them all, for example ευα corresponds to eva, and ευκ corresponds to efk.
-- Letters that can be represented by dual latins. For example the German ä which sounds something like ae.
+V2 simplified the Conversion classes. The combinations are now kept in a single Dictionary which is internally sorted by match length.
 
-The reason for this distinction is that those categories have to be transliterated separately and in series 
-in order to not corrupt the composite ones.
+Combination matches should be defined in lower case. The transliterator handles capitalization automatically.
 
-The transliterator first replaces the Combinations, then the plain letters, and finally the dual ones. That way, the combinations
-are not destroyed by plain letter replacements, and the replaced Duals are not destroyed by accidental letter or combination occurances
-in the already transliterated text.
-
-Letter and combination matches should be defined in lower case. The transliterator will try to replace and maintain capitalization
-of occurances that are either all lower case, all caps, or capitalized. Any weird capitalization like mid-word caps can cause weird
-misses or hits.
-
-The final part of the Conversion Interface defines a general purpose transformation for the entire text. Can be used for things like ToLower() etc.
+The final part of the IConversion Interface defines a general purpose transformation for the entire text. Can be used for things like ToLower() etc.
 
 This way, we can create conversion classes to do whatever transformations we need.
 For example, we could create a Profanity class, and replace all nasty words in our Profanity DB table with ******.
