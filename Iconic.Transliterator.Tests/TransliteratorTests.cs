@@ -7,6 +7,7 @@ namespace Iconic.Transliterator.Tests
         public void CapitalizationTest()
         {
             var lowercase = "δοκιμή";
+            Assert.AreEqual("Δοκιμή", Transliterator.CapitalizeOld(lowercase));
             Assert.AreEqual("Δοκιμή", Transliterator.Capitalize(lowercase));
         }        
     }

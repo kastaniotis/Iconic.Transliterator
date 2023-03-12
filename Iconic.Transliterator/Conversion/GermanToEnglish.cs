@@ -1,8 +1,6 @@
-﻿using System.Text;
-
-namespace Iconic.Transliterator.Conversion
+﻿namespace Iconic.Transliterator.Conversion
 {
-    public class GermanToEnglish : ConversionInterface
+    public class GermanToEnglish : IConversion
     {
         /*
          * Taken from stringy PHP library. I am not sure
@@ -10,14 +8,17 @@ namespace Iconic.Transliterator.Conversion
          * https://github.com/danielstjules/Stringy
          */
 
-        public static readonly Dictionary<string, string> Conversions = new Dictionary<string, string>()
+        public Dictionary<string, string> GetCombinations()
         {
+            return new Dictionary<string, string>()
+            {
                 { "ae", "ä" },
                 { "oe", "ö" },
                 { "ue", "ü" }
-        };
-        
-        public static string Transform(string input)
+            };
+        }
+
+        public string Transform(string input)
         {
             return input;
         }

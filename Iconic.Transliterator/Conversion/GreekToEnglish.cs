@@ -1,16 +1,16 @@
-﻿using System.Text;
-
-namespace Iconic.Transliterator.Conversion
+﻿namespace Iconic.Transliterator.Conversion
 {
-    public class GreekToEnglish : ConversionInterface
+    public class GreekToEnglish : IConversion
     {
         /*
          * https://open.books4languages.com/greek-a1-orthography/chapter/%CE%BF%CE%B9-%CF%83%CF%85%CE%BD%CE%B4%CF%85%CE%B1%CF%83%CE%BC%CE%BF%CE%AF-%CE%B1%CF%85-%CE%B5%CF%85/
          */
 
-        public static readonly Dictionary<string, string> Conversions = new Dictionary<string, string>()
+        public Dictionary<string, string> GetCombinations()
         {
-            // Those difthongs are better readable as double letters, rather than phoeneticly accurate single ones
+            return new()
+            {
+            // Those difthongs are better readable as double letters, rather than phonetically accurate single ones
                 //{ "ai", "αι,αί" },
                 //{ "i", "οι,ει,οί,εί" },
                 //{ "u", "ου,ού" },
@@ -64,8 +64,6 @@ namespace Iconic.Transliterator.Conversion
                 { "b", "μπ,β" },
                 { "g", "γκ,γγ,γ" },
                 { "a", "α,ά" },
-                //{ "b", "β" },
-                //{ "g" ,"γ" },
                 { "d", "δ" },
                 { "e", "ε,έ"},
                 { "z", "ζ"},
@@ -84,9 +82,10 @@ namespace Iconic.Transliterator.Conversion
                 { "f", "φ" },
                 { "kh", "χ" },
                 { "ps", "ψ" }
-        };
+            };
+        }
 
-        public static string Transform(string input)
+        public string Transform(string input)
         {
             return input;
         }

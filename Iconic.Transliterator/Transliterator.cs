@@ -1,65 +1,43 @@
 ﻿using Iconic.Transliterator.Conversion;
-using System;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Xml.Schema;
 
 namespace Iconic.Transliterator
 {
     public class Transliterator
     {
-        private Dictionary<string, string> Conversions = new Dictionary<string, string>();
-        private List<Type> Types = new();
-        public void AddConversions(Type className) 
-        {
-            var conversions = className.GetField("Conversions");//.GetProperty("Conversions");
-            Dictionary<string, string> conversion = new();// (Dictionary<string,string>).GetConstantValue();
-            conversion = conversions.GetValue(conversions) as Dictionary<string, string>;
+        private List<IConversion> _conversions = new();
+        private Dictionary<string, string> _combinations = new();
 
-            Types.Add(className);
-            foreach (var item in conversion) 
+        public void AddConversions(IConversion conversion) 
+        {
+            _conversions.Add(conversion);
+            foreach (var combination in conversion.GetCombinations()) 
             {
-                foreach (var current in item.Value.Split(","))
+                foreach (var current in combination.Value.Split(","))
                 {
-                    Conversions.Add(current, item.Key);
-                    var s = current.ToUpper();
-                    Conversions.TryAdd(current.ToUpper(), item.Key.ToUpper());
-                    Conversions.TryAdd(Capitalize(current), Capitalize(item.Key));
+                    _combinations.Add(current, combination.Key);
+                    _combinations.TryAdd(current.ToUpper(), combination.Key.ToUpper());
+                    _combinations.TryAdd(Capitalize(current), Capitalize(combination.Key));
                 }
             }
-            Conversions.OrderByDescending(i => i.Key.Length);
+            _combinations = _combinations.OrderByDescending(i => i.Key.Length).ToDictionary(i => i.Key, i => i.Value);
         }
+
         public string Convert(string text)
         {
-            // Elliminate multiple spaces
-            while(text.Contains("  "))
+            // TODO: This one is awful. Make the Conversion objects again. Cheaper to call the actions.     
+            Span<char> textSpan = stackalloc char[1];
+            foreach (var conversion in _conversions)
             {
-                text = text.Replace("  ", " ");
+                var tempSpan = conversion.Transform(text).AsSpan();
+                textSpan = stackalloc char[tempSpan.Length];
+                tempSpan.CopyTo(textSpan);
             }
 
-            foreach (var action in Types)
-            {
-                text = action.GetMethod("Transform").Invoke(action, new object[] { text }).ToString();
-            }
-
-            var builder = new StringBuilder(text);
-            
-            foreach (var combination in Conversions)
-            {
-                builder.Replace(combination.Key, combination.Value);
-            }
-
-            return builder.ToString();
-        }
-
-        public string ConvertSpan(string text)
-        {
-            Span<char> resultSpan = stackalloc char[text.Length];
-            text.AsSpan().CopyTo(resultSpan);
+            Span<char> resultSpan = stackalloc char[textSpan.Trim().Length];
+            textSpan.Trim().CopyTo(resultSpan);
             int occurence = -1;
             
-            foreach (var combination in Conversions)
+            foreach (var combination in _combinations)
             {
                 occurence = resultSpan.IndexOf(combination.Key);
                 while (occurence > -1)
@@ -83,9 +61,18 @@ namespace Iconic.Transliterator
             return resultSpan.ToString();
         }
 
-        public static string Capitalize(string text)
+        public static string CapitalizeOld(string text)
         {
             return text[0].ToString().ToUpper() + text[1..].ToLower();
+        }
+
+        public static string Capitalize(string text)
+        {
+            Span<char> span = stackalloc char[text.Length];
+            text.AsSpan().Slice(0, 1).ToUpper(span.Slice(0,1), null);
+            text.AsSpan().Slice(1).ToLower(span.Slice(1), null);
+
+            return span.ToString();
         }
     }
 }

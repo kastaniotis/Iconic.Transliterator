@@ -3,36 +3,32 @@ using Iconic.Transliterator.Conversion;
 
 namespace Iconic.Transliterator.Benchmarks
 {
+    [ArtifactsPath(@"../../../Results/")]
     [MemoryDiagnoser]
     public class ConversionBenchmarks
     {
-        Transliterator transliterator2;
-        string toReplace = "Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία ";
+        private readonly Transliterator _transliterator2;
+        //string toReplace = "Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία ";
+        string toReplace = "Ευκαρπία Εύη Αιώνας οιωνός Ευθυμία";
         public ConversionBenchmarks() 
         {
-            transliterator2 = new Transliterator();
-            transliterator2.AddConversions(typeof(GreekToEnglish));
-            transliterator2.AddConversions(typeof(EnglishToSlug));
+            _transliterator2 = new Transliterator();
+            _transliterator2.AddConversions(new GreekToEnglish());
+            _transliterator2.AddConversions(new EnglishToSlug());
         }
 
         [Benchmark]
         public void V2Init()
         {
             var converter = new Transliterator();
-            converter.AddConversions(typeof(GreekToEnglish));
-            converter.AddConversions(typeof(EnglishToSlug));
-        }
-
-        [Benchmark]
-        public string V2Conversion()
-        {
-            return transliterator2.Convert(toReplace);
+            converter.AddConversions(new GreekToEnglish());
+            converter.AddConversions(new EnglishToSlug());
         }
 
         [Benchmark]
         public string V2ConversionSpan()
         {
-            var result = transliterator2.ConvertSpan(toReplace);
+            var result = _transliterator2.Convert(toReplace);
             
             return result;
         }

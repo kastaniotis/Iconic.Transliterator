@@ -15,7 +15,7 @@ Support for Cyrilic languages. **Please help me improve this conversion**
 You can install the library through NuGet
 
 ```
-NuGet\Install-Package Iconic.Transliterator -Version 1.0.0
+NuGet\Install-Package Iconic.Transliterator -Version 2.0.0
 ```
 
 Here is a brief sample of how you can use the library

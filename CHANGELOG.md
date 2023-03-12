@@ -1,6 +1,8 @@
-- 1.1.3
-  Fix of dual letters not being transliterated
-  Support for Conversions based on the popular Stringy library. 
+- 2.0.0  
+  Fix of dual letters not being transliterated  
+  Heavy refactoring using Span to minimize cpu and memory footprint  
+  Simplification of Conversion Classes
+
 ---
 - 1.1.2  
   Support for Cyrilic alphabets. 

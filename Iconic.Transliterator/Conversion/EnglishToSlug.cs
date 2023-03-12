@@ -1,17 +1,18 @@
-﻿using System.Text;
-
-namespace Iconic.Transliterator.Conversion
+﻿namespace Iconic.Transliterator.Conversion
 {
-    public class EnglishToSlug : ConversionInterface
+    public class EnglishToSlug : IConversion
     {
-        public static readonly Dictionary<string, string> Conversions = new Dictionary<string, string>()
+        public Dictionary<string, string> GetCombinations()            
         {
-            { "-", " " }
-        };
-
-        public static string Transform(string input)
+            return new Dictionary<string, string> {
+                { " ", "  " },
+                { "-", " " }
+            };
+        }
+        
+        public string Transform(string input)
         {
-            return input.Trim().ToLower();
+            return input.ToLower();
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Iconic.Transliterator.Conversion
 {
-    public class CyrillicToEnglish : ConversionInterface
+    public class CyrillicToEnglish : IConversion
     {
         /*
          * Added from various sources like wikipedia and
@@ -12,10 +12,10 @@ namespace Iconic.Transliterator.Conversion
          * can help open an issue on github with your additions, 
          * corrections and examples for testing. Thanks in advance
          */
-
-
-        public static readonly Dictionary<string, string> Conversions = new Dictionary<string, string>()
+        public Dictionary<string, string> GetCombinations()
         {
+            return new Dictionary<string, string>()
+            {
                 {"a", "а"},
                 {"b", "б"},
                 {"v", "в"},
@@ -44,9 +44,10 @@ namespace Iconic.Transliterator.Conversion
                 {"yu", "ю"},
                 {"y", "й"},
                 {"ch", "ч"}
-        };
+            };
+        }
 
-        public static string Transform(string input)
+        public string Transform(string input)
         {
             return input;
         }

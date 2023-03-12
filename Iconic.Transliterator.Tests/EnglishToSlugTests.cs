@@ -1,9 +1,4 @@
 ﻿using Iconic.Transliterator.Conversion;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Iconic.Transliterator.Tests
 {
@@ -14,7 +9,7 @@ namespace Iconic.Transliterator.Tests
         public void SlugTest()
         {
             var slugger = new Transliterator();
-            slugger.AddConversions(typeof(EnglishToSlug));
+            slugger.AddConversions(new EnglishToSlug());
 
             var text = "New conversions can be aDded by creating a new class ";
 
@@ -23,7 +18,7 @@ namespace Iconic.Transliterator.Tests
 
             //multiple spaces are joined into one
             text = "has    4 spaces";
-            Assert.AreEqual(slugger.Convert(text), "has-4-spaces");
+            Assert.AreEqual("has-4-spaces", slugger.Convert(text));
 
             text = " has trailing and leading spaces  that should be removed   ";
             Assert.AreEqual("has-trailing-and-leading-spaces-that-should-be-removed", slugger.Convert(text));            

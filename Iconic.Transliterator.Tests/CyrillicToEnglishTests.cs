@@ -9,14 +9,13 @@ namespace Iconic.Transliterator.Tests
         public void CyrillicTest()
         {
             var transliterator = new Transliterator();
-            transliterator.AddConversions(typeof(CyrillicToEnglish));
+            transliterator.AddConversions(new CyrillicToEnglish());
 
             var text = "Примерен текст";
-            var result = transliterator.Convert(text);
-            var t = result.CompareTo("Primeren tekst");
-            Assert.AreEqual("Primеrеn tеkst", result);
+            Assert.AreEqual("Primеrеn tеkst", transliterator.Convert(text));
 
-            transliterator.AddConversions(typeof(EnglishToSlug));
+            transliterator.AddConversions(new EnglishToSlug());
+            
             Assert.AreEqual("primеrеn-tеkst", transliterator.Convert(text));
         }
     }
