@@ -58,3 +58,7 @@ The Slug is a pseudo language that defines the replacement rules to produce prop
 ## TODO:
 
 - Add functionality to allow more complex conversions like markdown to html
+
+## Acknowledgements
+
+Icons are courtesy of the [Noun Project](https://thenounproject.com/)
