@@ -1,4 +1,4 @@
-# Transliterator
+# <img src="https://github.com/kastaniotis/Iconic.Transliterator/raw/master/Iconic.Transliterator/icon.png" style="width:35px; vertica-align:bottom;"> Transliterator
 
 [![.NET](https://github.com/kastaniotis/Iconic.Transliterator/actions/workflows/dotnet.yml/badge.svg)](https://github.com/kastaniotis/Iconic.Transliterator/actions/workflows/dotnet.yml) 
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/kastaniotis/Iconic.Transliterator?color=%2331c854&label=Version%20&sort=semver)](https://github.com/kastaniotis/Iconic.Transliterator/releases) 

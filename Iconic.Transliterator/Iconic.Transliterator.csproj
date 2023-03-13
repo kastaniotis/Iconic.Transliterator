@@ -19,7 +19,7 @@ It supports multiple languages and can accept new ones very easily.</Description
     <PackageTags>slug;transliterate;transliterator;slugger;converter;Greek;Cyrillic;German</PackageTags>
     <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Version>1.1.2</Version>
+    <Version>2.0.0</Version>
     <AssemblyVersion></AssemblyVersion>
   </PropertyGroup>
 
