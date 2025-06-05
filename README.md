@@ -33,7 +33,7 @@ var slug = transliterator.convert(message); // "sevomaste-tin-idiotikotita-sas"
 ```
 
 You can add all the conversions that you want. The combinations are sorted by length. Larger matches are applied first, so that smaller matches do not 
-ruin larger them.
+ruin larger ones.
 
 ## Languages
 
